@@ -1,0 +1,16 @@
+{
+    "t_agg_mnth_subscriber_dly_update_msisdn_dag_variables":
+                        {
+                        "environment": "dev",
+                        "data_project_id": "bt-tch-3g-sunset-dp-dev",
+                        "bq_output_dataset": "none",
+                        "bq_output_table": "none",
+                        "project_id": "bt-mob-nwk-3gss-r-dev-proc",
+                        "schedule_interval": "0 3 * * *",
+                        "gce_region": "europe-west2",
+                        "gce_zone": "europe-west2-a",
+                        "df_sa_email": "composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com",
+                        "df_subnet": "regions/europe-west2/subnetworks/batch-job-subnet",
+                        "primary_key": "unknown"
+                        }
+}

@@ -1,0 +1,5 @@
+
+{
+    "mth_best_device_load_sql": "insert into `bt-tch-3g-sunset-dp-prod.dp_consumer_rw.hist_mth_best_device`(MONTH_ID, MSISDN, TAC, PROTOCOL, DEVICE_TYPE, MODEL, MANUFACTURER, MARKETING_NAME, VOLTE_FLAG, VOWIFI_FLAG, RECORD_TS) select MONTH_ID, MSISDN, TAC, PROTOCOL, DEVICE_TYPE, MODEL, MANUFACTURER, MARKETING_NAME, VOLTE_FLAG, VOWIFI_FLAG, current_timestamp() from `bt-tch-3g-sunset-dp-prod.dp_net_mobnet_rw.mth_best_device_vw`"
+                            
+}

@@ -1,0 +1,5 @@
+
+{
+    "device_load_sql": "insert into `bt-tch-3g-sunset-dp-prod.dp_net_mobnet_rw.ref_cdm_device_excal`(tac,marketing_name,manufacturer,model,protocol,device_type,volte_flag,vowifi_flag) select tac,marketing_name,manufacturer,model,protocol,device_type,volte_flag,vowifi_flag from `bt-con-fincdmi-dp-prod.con_dp_cdm_ref_ro.ref_cdm_device_excal`"
+                        
+}

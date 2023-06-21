@@ -1,0 +1,43 @@
+variables:
+  PROD_PLAN: ${CI_COMMIT_REF_SLUG}-prod
+  PROD_PROJECT_ID: bt-mob-nwk-3gss-r-proc
+  PROD_TEMPLATE_BUCKET: bt-mob-nwk-3gss-r-proc-tfstate
+  PROD_REGION: europe-west2
+  PROD_BUCKET_PREFIX: dags-dataflow-state
+  PROD_SERVICE_ACCOUNT: prod_deploy_key.json
+
+  
+# deploy-dataflow-cell:
+#   stage: deploy
+#   environment:
+#     name: Production
+#   script:
+#     - python3 'dataflows/dataflow_templates/dim_cell_data_job.py' 
+#       --runner DataflowRunner 
+#       --project $PROD_PROJECT_ID 
+#       --staging_location gs://bt-raw-ccn-net-mobnet-edwh-dim-cell-data/staging 
+#       --temp_location gs://bt-raw-ccn-net-mobnet-edwh-dim-cell-data/temp 
+#       --template_location gs://bt-net-mobnet-proc-dataflows/templates/dim_cell_data_job.py 
+#       --region $PROD_REGION
+#       --no_use_public_ips 
+#       --output gs://bt-cleansed-ccn-net-mobnet-edwh-dim-cell-data/dim-cell-clean
+#       --input gs://bt-raw-ccn-net-mobnet-edwh-dim-cell-data/*.gz
+#       --save_main_session
+#   only:
+#      refs:
+#        - prod
+
+upload-composer-env-two-prod:
+  stage: upload-dag-to-gcs
+  environment:
+    name: production
+  script:
+   - echo ${PROD_SERVICE_ACCOUNT_KEY} > $PROD_SERVICE_ACCOUNT
+   - gcloud auth activate-service-account --key-file $PROD_SERVICE_ACCOUNT
+   - export GOOGLE_APPLICATION_CREDENTIALS=$PROD_SERVICE_ACCOUNT  
+   - cd composer/composer_src/dags
+   - gcloud composer environments storage dags import --project=$PROD_PROJECT_ID 
+    --environment=composer-prod-two-prod --location=$PROD_REGION --source=composer
+  only:
+    refs:
+      - main

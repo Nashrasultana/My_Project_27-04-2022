@@ -1,0 +1,7 @@
+{
+	"product_ov_load_sql": "insert into bt-tch-3g-sunset-dp-prod.dp_net_mobnet_rw.ref_cdm_product_ov(curr_product_code,	start_date,	end_date,	mobile_data_speed,	product_group,	product_name,	mobile_data_allowance,	product_type,	source_system,	product_line,   mobile_service_type) select curr_product_code,	extract(date from start_date) start_date, extract(date from	end_date) end_date,	mobile_data_speed,	product_group,	product_name,	mobile_data_allowance,	product_type,	source_system,	product_line,   mobile_service_type from bt-con-fincdmi-dp-prod.con_dp_cdm_ref_ro.ref_cdm_product_ov where product_line = ‘BT Mobile’"
+    
+}
+
+
+

@@ -1,0 +1,11 @@
+variables:
+  NETWORK_DASHBOARD_3MONTH_DATA_JOB_ARGUMENTS: --runner DataflowRunner 
+      --project $DEV_PROJECT_ID 
+      --staging_location gs://bt-dev-raw-ccn-net-mobnet-edwh-nw-dashboard-3m-data/staging 
+      --temp_location gs://bt-dev-raw-ccn-net-mobnet-edwh-nw-dashboard-3m-data/temp 
+      --template_location gs://bt-dev-net-mobnet-proc-dataflows/templates/nw-dashboard-3m-data.json
+      --region $DEV_REGION 
+      --no_use_public_ips 
+      --output gs://bt-dev-cleansed-ccn-net-mobnet-edwh-nw-dashboard-3m-data/nw-dashboard-3m-data
+      --setup_file dataflows/setup.py
+      --save_main_session

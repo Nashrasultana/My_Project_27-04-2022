@@ -1,0 +1,15 @@
+variables:
+  SUBS_USAGE_JOB_ARGUMENTS: --runner DataflowRunner 
+      --project $DEV_PROJECT_ID 
+      --staging_location gs://bt-dev-raw-ccn-net-mobnet-edwh-agg-mth-subs-usage/staging 
+      --temp_location gs://bt-dev-raw-ccn-net-mobnet-edwh-agg-mth-subs-usage/temp 
+      --template_location gs://bt-dev-net-mobnet-proc-dataflows/templates/subs_usage_job.json
+      --region $DEV_REGION 
+      --no_use_public_ips 
+      --output gs://bt-dev-cleansed-ccn-net-mobnet-edwh-agg-mth-subs-usage/subs_usage_clean
+      --input gs://bt-dev-raw-ccn-net-mobnet-edwh-agg-mth-subs-usage/*.gz
+      --input_file_headers MONTH_ID,MSISDN,EXBR_ACCOUNT_NUM,IMEI,IMSI,FIRST_CELL_DATA_ID,LAST_CELL_DATA_ID,HOME_MO_COUNT,HOME_MT_COUNT,HOME_MO_SMS_COUNT,HOME_MT_SMS_COUNT,HOME_MO_DURATION_SECS,HOME_MT_DURATION_SECS,HOME_DATA_IN_VOLUME_KB,WORK_MO_COUNT,WORK_MT_COUNT,WORK_MO_SMS_COUNT,WORK_MT_SMS_COUNT,WORK_MO_DURATION_SECS,WORK_MT_DURATION_SECS,WORK_DATA_IN_VOLUME_KB,HOME_DATA_OUT_VOLUME_KB,WORK_DATA_OUT_VOLUME_KB,CSS_ACCOUNT_ID,JT_CUSTOMER_ID
+      --output_file_header MONTH_ID,MSISDN,EXBR_ACCOUNT_NUM,IMEI,IMSI,FIRST_CELL_DATA_ID,LAST_CELL_DATA_ID,HOME_MO_COUNT,HOME_MT_COUNT,HOME_MO_SMS_COUNT,HOME_MT_SMS_COUNT,HOME_MO_DURATION_SECS,HOME_MT_DURATION_SECS,HOME_DATA_IN_VOLUME_KB,WORK_MO_COUNT,WORK_MT_COUNT,WORK_MO_SMS_COUNT,WORK_MT_SMS_COUNT,WORK_MO_DURATION_SECS,WORK_MT_DURATION_SECS,WORK_DATA_IN_VOLUME_KB,HOME_DATA_OUT_VOLUME_KB,WORK_DATA_OUT_VOLUME_KB,CSS_ACCOUNT_ID,JT_CUSTOMER_ID
+      --primary_key MONTH_ID
+      --setup_file dataflows/setup.py
+      --save_main_session

@@ -1,0 +1,28 @@
+{   
+     "t_agg_mth_subs_usage_dag_variables":
+                                {
+                        "environment": "dev",
+                        "data_project_id": "bt-tch-3g-sunset-dp-dev",
+                        "bq_output_dataset": "none",
+                        "bq_output_table": "none",
+                        "clean_output_bucket": "bt-dev-cleansed-ccn-mob-nwk-edwh-agg-mth-subs-usage",
+                        "output_file_name": "subs-usage-clean",
+                        "agg_mth_destination_dataset": "bt-tch-3g-sunset-dp-dev.net_mobnet_rw.t_agg_mth_staging",
+                        "output": "serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com:gs://bt-dev-cleansed-ccn-mob-nwk-edwh-agg-mth-subs-usage/subs-usage-clean.csv",
+                        "project_id": "bt-mob-nwk-3gss-r-dev-proc",
+                        "schedule_interval": "0 3 * * *",
+                        "bucket_path": "gs://bt-dev-raw-ccn-mob-nwk-edwh-agg-mth-subscriber-usage",
+                        "raw_bucket_name": "bt-dev-raw-ccn-mob-nwk-edwh-agg-mth-subscriber-usage",
+                        "input_file": "EE_T_AGG_MTH*.gz",
+                        "gce_region": "europe-west2",
+                        "gce_zone": "europe-west2-a",
+                        "df_job_name": "agg-mth-subs-usage-data-dev-batch",
+                        "df_sa_email": "composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com",
+                        "df_subnet": "regions/europe-west2/subnetworks/batch-job-subnet",    
+                        "df_template": "gs://bt-dev-mob-nwk-proc-dataflows/templates/t_agg_mth_subscriber_usage_job.py",
+                        "output_file_header": "month_id, msisdn, exbr_account_num, css_account_id, jt_customer_id, subscription_sk, imei, imsi, first_cell_data_id, last_cell_data_id, home_mo_count, home_mt_count, home_mo_sms_count, home_mt_sms_count, home_mo_duration_secs, home_mt_duration_secs, home_data_cdr_count, home_data_in_volume_kb, work_mo_count, work_mt_count, work_mo_sms_count, work_mt_sms_count, work_mo_duration_secs, work_mt_duration_secs, work_data_cdr_count, work_data_in_volume_kb, cnt_of_distinct_bnumber, home_data_session_count, home_data_out_volume_kb, work_data_session_count, work_data_out_volume_kb, home_mo_dropcalls_count, home_mt_dropcalls_count, work_mo_dropcalls_count, work_mt_dropcalls_count, home_mo_ce_dropcalls_count, home_mt_ce_dropcalls_count, work_mo_ce_dropcalls_count, work_mt_ce_dropcalls_count, home_abnormal_session_count, work_abnormal_session_count, home_data_duration_secs, work_data_duration_secs, mo_handoff_cell_count, mt_handoff_cell_count, mo_handoff_technology_count, mt_handoff_technology_count, mo_handoff_mnc_count, mt_handoff_mnc_count, home_csd_duration_secs, work_csd_duration_secs, home_mt_dropcalls_ran_count, home_mt_dropcalls_core_count, work_mt_dropcalls_ran_count, work_mt_dropcalls_core_count, home_mo_dropcalls_ran_count, home_mo_dropcalls_core_count, work_mo_dropcalls_ran_count, work_mo_dropcalls_core_count, process_run_sequence",
+                        "input_file_headers": "month_id, msisdn, exbr_account_num, css_account_id, jt_customer_id, subscription_sk, imei, imsi, first_cell_data_id, last_cell_data_id, home_mo_count, home_mt_count, home_mo_sms_count, home_mt_sms_count, home_mo_duration_secs, home_mt_duration_secs, home_data_cdr_count, home_data_in_volume_kb, work_mo_count, work_mt_count, work_mo_sms_count, work_mt_sms_count, work_mo_duration_secs, work_mt_duration_secs, work_data_cdr_count, work_data_in_volume_kb, cnt_of_distinct_bnumber, home_data_session_count, home_data_out_volume_kb, work_data_session_count, work_data_out_volume_kb, home_mo_dropcalls_count, home_mt_dropcalls_count, work_mo_dropcalls_count, work_mt_dropcalls_count, home_mo_ce_dropcalls_count, home_mt_ce_dropcalls_count, work_mo_ce_dropcalls_count, work_mt_ce_dropcalls_count, home_abnormal_session_count, work_abnormal_session_count, home_data_duration_secs, work_data_duration_secs, mo_handoff_cell_count, mt_handoff_cell_count, mo_handoff_technology_count, mt_handoff_technology_count, mo_handoff_mnc_count, mt_handoff_mnc_count, home_csd_duration_secs, work_csd_duration_secs, home_mt_dropcalls_ran_count, home_mt_dropcalls_core_count, work_mt_dropcalls_ran_count, work_mt_dropcalls_core_count, home_mo_dropcalls_ran_count, home_mo_dropcalls_core_count, work_mo_dropcalls_ran_count, work_mo_dropcalls_core_count, process_run_sequence",
+                        "primary_key": "unknown",
+                        "delimeter": "|"
+                                }
+}

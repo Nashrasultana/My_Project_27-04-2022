@@ -1,0 +1,55 @@
+variables:
+  DEV_PLAN: ${CI_COMMIT_REF_SLUG}-dev
+  DEV_PROJECT_ID: bt-dig-netcompose-cc-dev-ops
+  DEV_TEMPLATE_BUCKET: bt-dev-mob-nwk-proc-dataflows
+  DEV_REGION: europe-west2
+  DEV_BUCKET_PREFIX: domain-infra-state
+  # DEV_DEPLOY_KEY: dev_deploy_key.json
+  DEV_SERVICE_ACCOUNT: dev_service_key.json
+
+# deploy-dataflow-dev:
+#   stage: deploy
+#   environment:
+#     name: development
+#   script:
+#     # #ccm_agg_mth job
+#     # - python3 'dataflows/main.py' $CCM_AGG_MTH_JOB_ARGUMENTS
+
+#     # #dim_product_ref job
+#     # - python3 'dataflows/main.py' $DIM_PRODUCT_REF_JOB_ARGUMENTS
+
+#     # #subs_usage job
+#     # - python3 'dataflows/main.py' $SUBS_USAGE_JOB_ARGUMENTS
+
+#     # #dim_device_ref job
+#     # - python3 'dataflows/main.py' $DIM_DEVICE_REF_JOB_ARGUMENTS
+
+#     #dim_cell_data_job
+#     - python3 'dataflows/main.py' $DIM_CELL_DATA_JOB_ARGUMENTS
+#   only:
+#      refs:
+#        - dev
+
+upload-composer-env-two-dev:
+  stage: upload-dag-to-gcs
+  environment:
+    name: development
+  script:
+   - echo ${DEV_NETCOM_SERVICE_ACCOUNT} > $DEV_SERVICE_ACCOUNT
+   - gcloud auth activate-service-account --key-file $DEV_SERVICE_ACCOUNT
+   
+   - export GOOGLE_APPLICATION_CREDENTIALS=$DEV_SERVICE_ACCOUNT
+   - cd composer/composer_src/dags
+   - gcloud composer environments storage dags import --project=$DEV_PROJECT_ID 
+    --environment=composer-dev-two-dev --location=$DEV_REGION --source=composer
+   - cd ../variables
+   - gcloud composer environments storage data import --project=$DEV_PROJECT_ID 
+    --environment=composer-dev-two-dev --location=$DEV_REGION --source=dag_variables
+
+  only:
+    refs:
+      - dev
+  # dependencies:
+  #   - deploy-dataflow-dev
+
+

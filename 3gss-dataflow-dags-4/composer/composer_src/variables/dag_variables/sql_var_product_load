@@ -1,0 +1,4 @@
+{
+    "product_load_sql": "insert into `bt-tch-3g-sunset-dp-prod.dp_net_mobnet_rw.ref_cdm_product_excal`(product_code,effective_date,expiration_date,protocol,product_rollup,base_type,product_group,product_description,total_allowance_data,family_type,base_type_level1,product_type,stack,brand) select product_code,effective_date,expiration_date,protocol,product_rollup,base_type,product_group,product_description,total_allowance_data,family_type,base_type_level1,product_type,stack,brand from `bt-con-fincdmi-dp-prod.con_dp_cdm_ref_ro.ref_cdm_product_excal`"
+
+}

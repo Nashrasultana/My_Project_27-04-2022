@@ -1,0 +1,15 @@
+variables:
+  DIM_PRODUCT_REF_JOB_ARGUMENTS: --runner DataflowRunner 
+      --project $DEV_PROJECT_ID 
+      --staging_location gs://bt-dev-raw-ccn-net-mobnet-edwh-dim-product-data/staging 
+      --temp_location gs://bt-dev-raw-ccn-net-mobnet-edwh-dim-product-data/temp 
+      --template_location gs://bt-dev-net-mobnet-proc-dataflows/templates/csv_import_job.json 
+      --region $DEV_REGION 
+      --no_use_public_ips 
+      --output gs://bt-dev-cleansed-ccn-net-mobnet-edwh-dim-product-data/dim-product-clean
+      --input gs://bt-dev-raw-ccn-net-mobnet-edwh-dim-product-data/*.gz
+      --input_file_headers PRODUCT_CODE,PRODUCT_DESCRIPTION,PRODUCT_GROUP,BASE_TYPE,EFFECTIVE_DATE,EXPIRATION_DATE,PRODUCT_ROLLUP,PROTOCOL
+      --output_file_header PRODUCT_CODE,PRODUCT_DESCRIPTION,PRODUCT_GROUP,BASE_TYPE,EFFECTIVE_DATE,EXPIRATION_DATE,PRODUCT_ROLLUP,PROTOCOL
+      --primary_key PRODUCT_CODE
+      --setup_file dataflows/setup.py
+      --save_main_session

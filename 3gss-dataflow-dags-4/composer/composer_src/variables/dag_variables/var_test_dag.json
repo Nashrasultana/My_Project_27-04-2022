@@ -1,0 +1,11 @@
+{
+    "environment": "dev",
+    "data_project_id": "bt-tch-3g-sunset-dp-dev",
+    "bq_output_dataset": "none",
+    "bq_output_table": "none",
+    "project_id": "bt-mob-nwk-3gss-r-dev-proc",
+    "schedule_interval": "0 0 * * *",
+    "gce_region": "europe-west2",
+    "gce_zone": "europe-west2-a",
+    "composer_sa_email": "composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com"
+}

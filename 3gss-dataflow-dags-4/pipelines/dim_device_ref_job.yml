@@ -1,0 +1,15 @@
+variables:
+  DIM_DEVICE_REF_JOB_ARGUMENTS: --runner DataflowRunner 
+      --project $DEV_PROJECT_ID 
+      --staging_location gs://bt-dev-raw-ccn-net-mobnet-edwh-dim-device-data/staging 
+      --temp_location gs://bt-dev-raw-ccn-net-mobnet-edwh-dim-device-data/temp 
+      --template_location gs://bt-dev-net-mobnet-proc-dataflows/templates/dim_device_ref_job.json
+      --region $DEV_REGION
+      --no_use_public_ips 
+      --output gs://bt-dev-cleansed-ccn-net-mobnet-edwh-dim-device-data/dim-device-clean
+      --input gs://bt-dev-raw-ccn-net-mobnet-edwh-dim-device-data/*.gz
+      --input_file_headers TAC,MARKETING_NAME,MANUFACTURER,PROTOCOL,DEVICE_TYPE,VOLTE_FLAG,VOWIFI_FLAG
+      --output_file_header TAC,MARKETING_NAME,MANUFACTURER,PROTOCOL,DEVICE_TYPE,VOLTE_FLAG,VOWIFI_FLAG
+      --primary_key TAC
+      --setup_file dataflows/setup.py
+      --save_main_session

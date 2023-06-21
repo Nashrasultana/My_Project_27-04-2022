@@ -1,0 +1,15 @@
+variables:
+  CCM_AGG_MTH_JOB_ARGUMENTS: --runner DataflowRunner 
+      --project $DEV_PROJECT_ID 
+      --staging_location gs://bt-dev-raw-ccn-net-mobnet-edwh-ccm-agg-mth/staging 
+      --temp_location gs://bt-dev-raw-ccn-net-mobnet-edwh-ccm-agg-mth/temp 
+      --template_location gs://bt-dev-net-mobnet-proc-dataflows/templates/ccm_agg_mth_job.json
+      --region $DEV_REGION 
+      --no_use_public_ips 
+      --output gs://bt-dev-cleansed-ccn-net-mobnet-edwh-ccm-agg-mth/ccm_agg_mth_clean
+      --input gs://bt-dev-raw-ccn-net-mobnet-edwh-ccm-agg-mth/*.gz
+      --input_file_headers SUBSCRIBER_NUM,PRICE_PLAN,AGG_MTH,STACK,CURRENT_BRAND,BUSINESS_TYPE,BILLING_BASE,SUBSCRIBER_STATUS,ACTIVE_30D_PAYG,ACTIVE_90D_PAYG,EE_LIFETIME_ID,ACCOUNT_NUM,SUB_ID,BASE_TYPE,ACCOUNT_TYPE
+      --output_file_header SUBSCRIBER_NUM,PRICE_PLAN,AGG_MTH,STACK,CURRENT_BRAND,BUSINESS_TYPE,BILLING_BASE,SUBSCRIBER_STATUS,ACTIVE_30D_PAYG,ACTIVE_90D_PAYG,EE_LIFETIME_ID,ACCOUNT_NUM,SUB_ID,BASE_TYPE,ACCOUNT_TYPE
+      --primary_key SUBSCRIBER_NUM
+      --setup_file dataflows/setup.py
+      --save_main_session

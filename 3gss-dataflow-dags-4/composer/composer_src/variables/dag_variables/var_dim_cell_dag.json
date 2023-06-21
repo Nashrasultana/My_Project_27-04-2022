@@ -1,0 +1,29 @@
+{
+    "dim_cell_dag_variables": 
+                                {
+                    "environment": "dev",
+                    "data_project_id": "bt-tch-3g-sunset-dp-dev",
+                    "bq_output_dataset": "none",
+                    "bq_output_table": "none",
+                    "clean_output_bucket": "bt-dev-cleansed-ccn-mob-nwk-edwh-dim-cell-data",
+                    "output_file_name": "dim-cell-clean",
+                    "dim_cell_destination_dataset": "bt-tch-3g-sunset-dp-dev.net_mobnet_rw.dim_cell_data_staging",
+                    "output": "serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com:gs://bt-dev-cleansed-ccn-mob-nwk-edwh-dim-cell-data/dim-cell-clean.csv",
+                    "project_id": "bt-mob-nwk-3gss-r-dev-proc",
+                    "schedule_interval": "0 3 * * *",
+                    "bucket_path": "gs://bt-dev-raw-ccn-mob-nwk-edwh-dim-cell-data",
+                    "raw_bucket_name": "bt-dev-raw-ccn-mob-nwk-edwh-dim-cell-data",
+                    "input_file": "EE_DIM_CELL*.dat.gz",
+                    "gce_region": "europe-west2",
+                    "gce_zone": "europe-west2-a",
+                    "df_job_name": "dim-cell-data-dev-batch",
+                    "df_sa_email": "composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com",
+                    "df_subnet": "regions/europe-west2/subnetworks/batch-job-subnet",
+                    "df_template": "gs://bt-dev-mob-nwk-proc-dataflows/templates/dim_cell_data_job.json",
+                    "output_file_header": "CELL_DATA_ID,EFFECTIVE_FROM_DATE_ID,EFFECTIVE_TO_DATE_ID,IMS_DATE,NODE_ID,NODE_NAME,NODE_CLASS,CONFIGURATION_DATA_1,CONFIGURATION_DATA_2,CONFIGURATION_DATA_3,SITE_CODE,SITE_NAME,BST_STATUS,ENGINEERING_NAME,REGION,ARENT_NODE,ANTENNA_BEARING,CELL_GENERATION,SITE_ADDRESS_LINE_1,SITE_ADDRESS_LINE_2,SITE_ADDRESS_LINE_3,SITE_ADDRESS_LINE_4,COUNTY,SITE_NUMBER,SITE_AREA_DESCRIPTION,ACQUISITION_STATUS,RADIUS,BEGIN_ANGLE,END_ANGLE,CELLSECTOR_NAME,NODE_COUNTY,NODE_SITE_NUMBER,SOURCE,CELL_ID,LAC,SITE_ID,MAX_CELL_RADIUS,MNC,CELL_STATUS,LATITUDE,LONGITUDE,NORTHING,EASTING,ANTENNA_TYPE,POST_CODE,MCC,LOADED_DT,BSC,ALTITUDE,CELL,ACCMIN,ANTENNA_GAIN,BCC,BCCHNO,BSPWR,BSPWRB,C_SYS_TYPE,CELL_DIR,CELL_TYPE,ENV_CHAR,HEIGHT,MAX_ALTITUDE,MIN_ALTITUDE,NCC,SECTOR_ANGLE,TALIM,ANTENNA_TILT,OVERRIDE_TA,NODE_STATUS,ENODEBID,GLOBAL_CELL_ID,TECHNOLOGY,PROCESS_RUN_SEQUENCE,SOURCED_FROM",
+                    "input_file_headers": "CELL_DATA_ID,EFFECTIVE_FROM_DATE_ID,EFFECTIVE_TO_DATE_ID,IMS_DATE,NODE_ID,NODE_NAME,NODE_CLASS,CONFIGURATION_DATA_1,CONFIGURATION_DATA_2,CONFIGURATION_DATA_3,SITE_CODE,SITE_NAME,BST_STATUS,ENGINEERING_NAME,REGION,ARENT_NODE,ANTENNA_BEARING,CELL_GENERATION,SITE_ADDRESS_LINE_1,SITE_ADDRESS_LINE_2,SITE_ADDRESS_LINE_3,SITE_ADDRESS_LINE_4,COUNTY,SITE_NUMBER,SITE_AREA_DESCRIPTION,ACQUISITION_STATUS,RADIUS,BEGIN_ANGLE,END_ANGLE,CELLSECTOR_NAME,NODE_COUNTY,NODE_SITE_NUMBER,SOURCE,CELL_ID,LAC,SITE_ID,MAX_CELL_RADIUS,MNC,CELL_STATUS,LATITUDE,LONGITUDE,NORTHING,EASTING,ANTENNA_TYPE,POST_CODE,MCC,LOADED_DT,BSC,ALTITUDE,CELL,ACCMIN,ANTENNA_GAIN,BCC,BCCHNO,BSPWR,BSPWRB,C_SYS_TYPE,CELL_DIR,CELL_TYPE,ENV_CHAR,HEIGHT,MAX_ALTITUDE,MIN_ALTITUDE,NCC,SECTOR_ANGLE,TALIM,ANTENNA_TILT,OVERRIDE_TA,NODE_STATUS,ENODEBID,GLOBAL_CELL_ID,TECHNOLOGY,PROCESS_RUN_SEQUENCE,SOURCED_FROM",
+                    "primary_key": "CELL_DATA_ID",
+                    "delimeter": "|"
+                            }
+                    
+}
