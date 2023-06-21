@@ -1,0 +1,187 @@
+insert into `bt-tch-3g-sunset-dp-dev.net_mobnet_rw.bi_ccm_agg_mth_sample`(subscriber_num,  price_plan, agg_mth,  stack,  current_brand,  business_type,  billing_base, arpu, subscriber_status,  active_30d_payg,  active_90d_payg,  account_num,  sub_id, base_type,  account_type, contract_start_date,  contract_end_date)  
+                
+select subscriber_num,  price_plan, agg_mth,  stack,  current_brand,  business_type,  billing_base, arpu, subscriber_status,  active_30d_payg,  active_90d_payg,  account_num,  sub_id, base_type,  account_type, contract_start_date,  contract_end_date from 
+                 (                    
+
+with cdm_bvp as (
+
+-- SELECT consumer paym from waynes table - join with brand from vipul to identify t-mobile 
+  
+  
+  select 
+  
+  cdm.account_num,
+
+  -- cast snapshot date to format YYYYMM (string)
+     cast((extract(year from cdm.snapshot_date)||lpad(cast(extract(month from cdm.snapshot_date)as string), 2, '0')) as string) as agg_mth,
+
+    cdm.csm_stack as stack, 
+
+    cdm.service_product_code as price_plan,
+
+    cdm.service_id as sub_id,
+
+    cdm.service_product_type as base_type,
+
+    -- case when safe_cast(cdm.ctn as int) in 
+    --     (select bvp.subscriber_num 
+    --     from `bt-bvp-dataprod-dp-prod.cons_bvp_dp_cdm_data_product_ro.vw_bvp_dp_010_bq_cdm_bi_ccm_agg_mth_raw` as bvp  
+    --     where   bvp.current_brand= 'T-Mobile' AND ) then 'T-Mobile'
+    -- else cdm.brand end as current_brand,
+
+    case when safe_cast(cdm.ctn as int) = bvp.subscriber_num then bvp.current_brand else cdm.brand end as current_brand,
+
+    cdm.service_id_status as subscriber_status,
+
+    cdm.ctn as subscriber_num,
+
+    'PAYM' as billing_base,
+    
+    cdm.total_service_product_rev_pm as arpu,
+
+    -- bvp.ee_lifetime_id,
+
+    case when safe_cast(cdm.ctn as int) = bvp.subscriber_num then bvp.account_type
+    else 'N/A' end as account_type,
+
+    'Consumer' as business_type,
+
+    -1 as active_30d_payg,
+
+    -1 as active_90d_payg, 
+    
+    -- cdm.current_start_date, 
+    
+    cdm.contract_start_date, 
+    
+    cdm.contract_end_date
+
+  FROM `bt-con-fincdmi-dp-prod.con_dp_cdm_base_ro.cdm_dly_base` as cdm 
+    
+    -- left join
+    -- `bt-bvp-dataprod-dp-prod.cons_bvp_dp_cdm_data_product_ro.vw_bvp_dp_010_bq_cdm_bi_ccm_agg_mth_raw` as bvp
+    -- on safe_cast(cdm.ctn as int) = bvp.subscriber_num
+
+    LEFT JOIN
+  ( SELECT DISTINCT
+        subscriber_num, account_type,agg_mth, current_brand, contract_start_date
+    FROM `bt-bvp-dataprod-dp-prod.cons_bvp_dp_cdm_data_product_ro.vw_bvp_dp_010_bq_cdm_bi_ccm_agg_mth_raw`
+  ) AS bvp ON
+  safe_cast(cdm.ctn as int) = bvp.subscriber_num
+  and cast((extract(year from cdm.snapshot_date)||lpad(cast(extract(month from cdm.snapshot_date)as string), 2, '0')) as string) = cast(bvp.agg_mth as string)
+  and cdm.contract_start_date = bvp.contract_start_date
+
+  where 
+  cdm.service = 'Mobile'
+
+    and
+    ( cdm.snapshot_date  = last_day(date_sub(current_date(), interval 1 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 2 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 3 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 4 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 5 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 6 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 7 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 8 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 9 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 10 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 11 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 12 month))
+    -- or  cdm.snapshot_date  = last_day(date_sub(current_date(), interval 13 month))
+
+    )
+
+union distinct
+
+select 
+    cast(bvp.account_num as string) as account_num,
+
+    cast(bvp.agg_mth as string)as agg_mth,
+
+    bvp.stack, 
+
+    bvp.price_plan,
+
+    cast(bvp.sub_id as string) as sub_id,
+
+    bvp.base_type,
+
+    bvp.current_brand,
+
+    bvp.subscriber_status,
+
+    case
+  when cast(bvp.subscriber_num as string) not like '0%' then concat('0', cast(bvp.subscriber_num as string))
+  else cast(bvp.subscriber_num as string) end as subscriber_num, 
+
+    bvp.billing_base,
+
+    cast(bvp.arpu as numeric) as arpu,
+
+    -- bvp.ee_lifetime_id,
+
+    bvp.account_type,
+
+    bvp.business_type,
+
+    bvp.active_30d_payg,
+
+    bvp.active_90d_payg, 
+    
+    -- bvp.current_start_date, 
+    
+    bvp.contract_start_date, 
+    
+    bvp.contract_end_date
+
+  from
+
+  `bt-bvp-dataprod-dp-prod.cons_bvp_dp_cdm_data_product_ro.vw_bvp_dp_010_bq_cdm_bi_ccm_agg_mth_raw` as bvp
+
+  where 
+-- Limit to one month
+  cast(bvp.agg_mth as string) = (cast(date_add(date_trunc(current_date(), month), interval -1 month) AS STRING FORMAT 'YYYYMM'))
+--  and
+--    cast(bvp.agg_mth as string) between '202108' and '202208' 
+    and
+  --All non consumer : 
+   (bvp.business_type <> 'Consumer'
+
+  -- Active Consumer Payg: 
+    or (bvp.business_type = 'Consumer' and bvp.billing_base = 'PAYG'
+    --  exclude orange payg
+    and (bvp.current_brand<>'Orange' and bvp.billing_base = 'PAYG')
+     ))
+  )
+
+SELECT
+
+case
+  when subscriber_num not like '0%' then concat('0', subscriber_num)
+  else subscriber_num end 
+as subscriber_num,
+price_plan,
+agg_mth,
+stack,
+current_brand,
+business_type,
+billing_base,
+arpu,
+subscriber_status,
+active_30d_payg,
+active_90d_payg,
+--ee_lifetime_id,
+account_num,
+sub_id,
+base_type,
+account_type,
+--extract(date from current_start_date) as current_start_date,
+extract(date from contract_start_date) as contract_start_date,
+extract(date from contract_end_date) as contract_end_date
+  
+from
+
+cdm_bvp   
+
+   
+                 )

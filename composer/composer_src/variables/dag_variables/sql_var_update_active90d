@@ -1,0 +1,24 @@
+{
+  "usage_load_sql": "UPDATE `bt-tch-3g-sunset-dp-prod.dp_consumer_rw.usage_agg_mth` a
+
+SET a.NEW_ACTIVE90D_PAYG = b.NEW_ACTIVE90D_FLAG
+
+FROM (SELECT u.MSISDN,SUM(u.ACTIVE_30D_PAYG) AS ACTIVE_30D_SUM,
+
+CASE 
+
+  WHEN SUM(u.ACTIVE_30D_PAYG)>0 THEN 1 
+
+  WHEN SUM(u.ACTIVE_30D_PAYG)<0 THEN -1
+
+  WHEN SUM(u.ACTIVE_30D_PAYG)=0 THEN 0
+
+  END AS NEW_ACTIVE90D_FLAG,
+
+FROM `bt-tch-3g-sunset-dp-prod.dp_consumer_rw.usage_agg_mth` AS u
+
+WHERE AGG_MTH BETWEEN CAST(FORMAT_DATE("%Y%m",date_sub(current_date(), interval 4 month)) AS INT64) AND CAST (FORMAT_DATE("%Y%m",date_sub(current_date(), interval 2 month)) AS INT64) GROUP BY 1) b
+
+WHERE a.AGG_MTH = CAST (FORMAT_DATE("%Y%m",date_sub(current_date(), interval 1 month)) AS INT64) AND a.MSISDN=b.MSISDN;"
+
+}

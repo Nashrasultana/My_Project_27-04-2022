@@ -1,0 +1,4 @@
+{
+    "t_agg_mnth_msisdn_update_sql.sql": "update `bt-tch-3g-sunset-dp-dev.net_mobnet_rw.t_agg_mth_subscriber_usage` set msisdn = trim(msisdn)    where month_id>=202203"
+
+}

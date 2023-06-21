@@ -1,0 +1,4 @@
+{
+    "t_agg_dly_subs_timestamp_sql": "update `bt-tch-3g-sunset-dp-dev.net_mobnet_rw.t_agg_dly_subs_usage` set record_ts = current_timestamp() where record_ts IS NULL"
+
+}

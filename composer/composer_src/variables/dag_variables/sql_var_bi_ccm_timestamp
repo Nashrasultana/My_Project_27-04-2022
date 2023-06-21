@@ -1,0 +1,4 @@
+{
+    "bi_ccm_timestamp_sql": "update `bt-tch-3g-sunset-dp-prod.dp_net_mobnet_rw.bi_ccm_agg_mth` set record_ts = current_timestamp() where record_ts IS NULL"
+
+}

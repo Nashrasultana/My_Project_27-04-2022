@@ -1,0 +1,14 @@
+
+{
+    "var_3g_import_dag_variables_config":
+            {
+                    "environment": "dev",
+                    "project_id": "bt-net-mobnet-r-dev-proc",
+                    "bucket_name": "europe-west2-composer-dev-t-2d8ce3b5-bucket",
+                    "prefix": "data/dag_variables/var",
+                    "gce_region": "europe-west2",
+                    "gce_zone": "europe-west2-a",
+                    "df_sa_email": "composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com"
+            }
+
+}

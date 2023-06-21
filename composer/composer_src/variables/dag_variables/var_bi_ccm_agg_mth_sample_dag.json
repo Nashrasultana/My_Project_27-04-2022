@@ -1,0 +1,27 @@
+{
+    
+    "bi_ccm_agg_mth_sample_dag_variables":
+                        {
+                            "environment" : "dev",
+                            "data_project_id" : "bt-net-mobnet-r-dev-data",
+                            "bq_output_dataset" : "none",
+                            "bq_output_table" : "none",
+                            "clean_output_bucket" : "bt-dev-cleansed-ccn-net-mobnet-edwh-ccm-agg-mth",
+                            "output_file_name" : "ccm_agg_mth_file_clean",
+                            "output" : "serviceAccount:ccm-agg-mth-batch-dev-df-sa@bt-net-mobnet-r-dev-proc.iam.gserviceaccount.com:gs://bt-dev-cleansed-ccn-net-mobnet-edwh-ccm-agg-mth/ccm_agg_mth_clean.csv",
+                            "project_id" : "bt-net-mobnet-r-dev-proc",
+                            "schedule_interval" : "*/15 * * * *",
+                            "bucket_path" : "gs://bt-dev-raw-ccn-net-mobnet-edwh-ccm-agg-mth",
+                            "input_file" : "*.gz",
+                            "gce_region" : "europe-west2",
+                            "gce_zone" : "europe-west2-a",
+                            "df_job_name" : "ccm-agg-mth-batch",
+                            "df_sa_email": "ccm-agg-mth-batch-dev-df-sa@bt-net-mobnet-r-dev-proc.iam.gserviceaccount.com",
+                            "df_subnet": "regions/europe-west2/subnetworks/ccm-agg-mth-batch-subnet",
+                            "df_template": "gs://bt-dev-net-mobnet-proc-dataflows/templates/ccm_agg_mth_job.json",
+                            "output_file_header" : "SUBSCRIBER_NUM,PRICE_PLAN,AGG_MTH,STACK,CURRENT_BRAND,BUSINESS_TYPE,BILLING_BASE,SUBSCRIBER_STATUS,ACTIVE_30D_PAYG,ACTIVE_90D_PAYG,EE_LIFETIME_ID,ACCOUNT_NUM,SUB_ID,BASE_TYPE,ACCOUNT_TYPE",
+                            "input_file_headers" : "SUBSCRIBER_NUM,PRICE_PLAN,AGG_MTH,STACK,CURRENT_BRAND,BUSINESS_TYPE,BILLING_BASE,SUBSCRIBER_STATUS,ACTIVE_30D_PAYG,ACTIVE_90D_PAYG,EE_LIFETIME_ID,ACCOUNT_NUM,SUB_ID,BASE_TYPE,ACCOUNT_TYPE",
+                            "primary_key" : "SUBSCRIBER_NUM",
+                            "columns_to_remove" : ""
+                        }
+}

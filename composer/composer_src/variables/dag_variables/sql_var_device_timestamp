@@ -1,0 +1,4 @@
+{
+    "device_timestamp_sql": "update `bt-tch-3g-sunset-dp-prod.dp_net_mobnet_rw.ref_cdm_device_excal` set record_ts = current_timestamp() where record_ts IS NULL"
+    
+}

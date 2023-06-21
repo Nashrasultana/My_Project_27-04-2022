@@ -1,0 +1,56 @@
+variables:
+  DEV_PLAN: ${CI_COMMIT_REF_SLUG}-dev
+  DEV_PROJECT_ID: bt-grp-resour-dev-data
+  DEV_BUCKET: bt-net-mobnet-r-dev-data-tfstate
+  DEV_BUCKET_PREFIX: net-mobnet-r-3gss-data-state
+  DEV_DEPLOY_KEY: dev_deploy_key.json
+
+.only-feature-DAI3GSS-121-nashra:
+  except:
+    - master
+    - main
+
+feature-DAI3GSS-121-nashra-plan:
+  stage: plan
+  extends: 
+    - .only-feature-DAI3GSS-121-nashra
+  script:
+    - cd terraform/infra
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_PROC_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - gcloud auth activate-service-account --key-file $DEV_DEPLOY_KEY
+    - export GOOGLE_APPLICATION_CREDENTIALS=$DEV_DEPLOY_KEY
+    - terraform init -reconfigure -backend-config="prefix=$DEV_BUCKET_PREFIX" -backend-config="bucket=$DEV_BUCKET"
+    - terraform plan -var-file=../dev/variables.tfvars -out=$DEV_PLAN.tfplan
+    - terraform show -no-color $DEV_PLAN.tfplan > $DEV_PLAN.txt
+    - terraform show -json -no-color $DEV_PLAN.tfplan > $DEV_PLAN.json
+    - cat $DEV_PLAN.json | convert_report > $DEV_PLAN.gitlab.json
+  artifacts:
+    expire_in: 1 hour
+    when: on_success
+    paths:
+      - terraform/infra/$DEV_PLAN.tfplan
+      - terraform/infra/$DEV_PLAN.txt
+      - terraform/infra/$DEV_PLAN.json
+    reports:
+      terraform:
+        - terraform/infra/$DEV_PLAN.gitlab.json
+
+feature-DAI3GSS-121-nashra-apply:
+  stage: apply
+  script:
+    - cd terraform/infra
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_PROC_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - gcloud auth activate-service-account --key-file $DEV_DEPLOY_KEY
+    - export GOOGLE_APPLICATION_CREDENTIALS=$DEV_DEPLOY_KEY
+    - terraform init -backend-config="prefix=$DEV_BUCKET_PREFIX" -backend-config="bucket=$DEV_BUCKET"
+    - terraform apply -auto-approve -input=false $DEV_PLAN.tfplan
+  only:
+    refs:
+      - feature-DAI3GSS-121-nashra
+  when: manual
+  dependencies:
+    - feature-DAI3GSS-121-nashra-plan
