@@ -1,0 +1,18 @@
+[
+    {
+      "name": "property_name",
+      "type": "STRING"
+    },
+    {
+      "name": "property_value",
+      "type": "STRING"
+    },
+    {
+      "name": "created_dttm",
+      "type": "DATETIME"
+    },
+    {
+      "name": "updated_dttm",
+      "type": "DATETIME"
+    }
+]

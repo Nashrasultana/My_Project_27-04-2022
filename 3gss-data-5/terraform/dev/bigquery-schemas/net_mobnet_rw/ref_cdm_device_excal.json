@@ -1,0 +1,39 @@
+[
+    {
+      "name": "tac",
+      "type": "STRING"
+    },
+    {
+      "name": "marketing_name",
+      "type": "STRING"
+    },
+    {
+      "name": "manufacturer",
+      "type": "STRING"
+    },
+    {
+      "name": "model",
+      "type": "STRING"
+    },
+    {
+      "name": "protocol",
+      "type": "STRING"
+    },
+    {
+      "name": "device_type",
+      "type": "STRING"
+    },
+    {
+        "name": "volte_flag",
+        "type": "STRING"
+    },
+    {
+        "name": "vowifi_flag",
+        "type": "STRING"
+    },
+    {
+        "name": "record_ts",
+        "type": "TIMESTAMP"
+    }
+]
+

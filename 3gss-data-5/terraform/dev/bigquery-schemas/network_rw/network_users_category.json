@@ -1,0 +1,22 @@
+[
+    {
+      "name": "date_mth",
+      "type": "DATE"
+    },
+    {
+      "name": "msisdn",
+      "type": "STRING"
+    },
+    {
+      "name": "Brand",
+      "type": "STRING"
+    },
+    {
+      "name": "billing_base",
+      "type": "STRING"
+    },
+    {
+      "name": "business_type",
+      "type": "STRING"
+    }
+  ]

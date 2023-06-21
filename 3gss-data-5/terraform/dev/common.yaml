@@ -1,0 +1,690 @@
+stage : dev
+data_project_id: bt-tch-3g-sunset-dp-dev
+project_type: ccn
+
+service_accounts:
+    bq-bq-tkn-reidentify:
+      display_name: Service account to reidentify data
+      description: service account to reidentify the tokenized data from bigquery table
+
+buckets:
+  bt-dev-cleansed-ccn-net-mobnet-log-sink-data:
+    team: 3gss
+    costcentre: 3gss
+    cfu: networks
+    ccn_name: mobnet
+    versioning: true
+    include_logging_bucket: false
+    roles:
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      read_write:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+
+  bt-dev-cleansed-ccn-mob-nwk-edwh-dim-cell-data:
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev-mob-nwk-edwh-dim-cell-data
+    versioning: true
+    include_logging_bucket: false
+    roles:
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      read_write:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  bt-dev-cleansed-ccn-mob-nwk-edwh-agg-dly-subs-usage:
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev-mob-nwk-edwh-agg-mth-subs-usage
+    versioning: true
+    include_logging_bucket: false
+    roles:
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        - serviceAccount:bq-bq-tkn-reidentify-dev@bt-tch-3g-sunset-dp-dev.iam.gserviceaccount.com
+
+      # read_write:
+      #   - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  bt-dev-cleansed-ccn-mob-nwk-edwh-agg-mth-subs-usage:
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev-mob-nwk-edwh-agg-mth-subs-usage
+    versioning: true
+    include_logging_bucket: false
+    roles:
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      read_write:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+log_sinks:
+  bt-dev-cleansed-ccn-net-mobnet_log_sink:
+    project: bt-tch-3g-sunset-dp-dev
+    description: "log sink for cloud storage bucket"
+    bq_use_partitioned_tables: false
+    create_log_bucket: true
+    log_bucket: 
+      name: bt-dev-cleansed-ccn-net-mobnet-log-sink-data
+      retention: 120 
+      project: bt-tch-3g-sunset-dp-dev
+      region: europe-west2
+      
+    roles:
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      read_write:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+ 
+datasets:
+  net_mobnet_rw:
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw
+    display_name: net_mobnet_rw
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        - serviceAccount:bq-bq-tkn-reidentify-dev@bt-tch-3g-sunset-dp-dev.iam.gserviceaccount.com
+
+
+  network_rw:
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_network_rw
+    display_name: network_rw
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+
+  mobnet_ops_ro:
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw
+    display_name: mobnet_ops_ro
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+
+
+tables:
+  ref_cdm_device_excal:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/ref_cdm_device_excal.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_ref_cdm_device_excal
+    display_name: ref_cdm_device_excal
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  1687354418000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+  
+  ref_cdm_product_ov:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/ref_cdm_product_ov.json
+    team: 3gss
+    costcentre: dig20965
+    cfu: technology
+    ccn_name: net_mobnet_rw_ref_cdm_product_ov
+    display_name: ref_cdm_product_ov
+    deletion_protection: false
+    clustering:
+      - curr_product_code
+      - start_date
+      - end_date
+    time_partitioning:                     
+        expiration_ms:  1687354418000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  
+  ref_cdm_product_excal:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/ref_cdm_product_excal.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_ref_cdm_product_excal
+    display_name: ref_cdm_product_excal
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  7776000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+        
+
+  dim_cell_data:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/dim_cell_data.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_dim_cell_data
+    display_name: dim_cell_data
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  1687354418000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  dim_cell_data_temp_data:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/dim_cell_data_temp_data.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_dim_cell_data_temp_data
+    display_name: dim_cell_data_temp_data
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  1687354418000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  t_agg_mth_subscriber_usage:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_mth_subscriber_usage.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_t_agg_mth_subscriber_usage
+    display_name: t_agg_mth_subscriber_usage
+    deletion_protection: false
+    clustering: 
+      - month_id
+      - msisdn
+      - imei
+      - imsi
+    time_partitioning:                     
+        expiration_ms:  15552000000
+        field:  month_date
+        type: DAY
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  t_agg_mth_subs_usage:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_mth_subs_usage.json
+    team: 3gss
+    costcentre: dig20965
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_t_agg_mth_subs_usage
+    display_name: t_agg_mth_subs_usage
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  35424000000
+        field:  month_date
+        type: MONTH
+        require_partition_filter: true
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+ t_agg_mth_subscriber_usage_temp_data:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_mth_subscriber_usage_temp_data.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_t_agg_mth_subscriber_usage_temp_data
+    display_name: t_agg_mth_subscriber_usage_temp_data
+    deletion_protection: false
+    clustering: 
+      - month_id
+      - msisdn
+      - imei
+      - imsi
+    time_partitioning:                     
+        expiration_ms:  15552000000
+        field:  month_date
+        type: DAY
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  t_agg_mth_staging:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_mth_staging.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_t_agg_mth_staging
+    display_name: t_agg_mth_staging
+    deletion_protection: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  t_agg_dly_staging:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_dly_staging.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_t_agg_dly_staging
+    display_name: t_agg_dly_staging
+    deletion_protection: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+
+  t_agg_dly_subscriber_usage:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_dly_subscriber_usage.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_ref_t_agg_dly_subscriber_usage
+    display_name: t_agg_dly_subscriber_usage
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  7776000000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  t_agg_dly_subs_usage:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_dly_subs_usage.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_ref_t_agg_dly_subs_usage
+    display_name: t_agg_dly_subs_usage
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  35424000000
+        field: call_date
+        type: DAY
+        require_partition_filter: true
+    roles: 
+        owner:
+          - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+        reader:
+          - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        writer:
+          - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  
+
+  t_agg_dly_subscriber_usage_sample:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_dly_subscriber_usage_sample.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_ref_t_agg_dly_subscriber_usage_sample
+    display_name: t_agg_dly_subscriber_usage_sample
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  7776000000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+t_agg_dly_subscriber_usage_temp_data:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/t_agg_dly_subscriber_usage_temp_data.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_ref_t_agg_dly_subscriber_usage_temp_data
+    display_name: t_agg_dly_subscriber_usage_temp_data
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  7776000000
+        field:  record_ts
+        type: DAY
+        require_partition_filter: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  bi_ccm_agg_mth_sample:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/bi_ccm_agg_mth_sample.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_net_mobnet_rw_ref_bi_ccm_agg_mth_sample
+    display_name: bi_ccm_agg_mth_sample
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  1687354418000
+        field:  record_ts
+        type: MONTH
+        require_partition_filter: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+    
+  bi_ccm_agg_mth:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/bi_ccm_agg_mth.json
+    team: 3gss
+    costcentre: dig20965
+    cfu: technology
+    ccn_name: net_mobnet_rw_bi_ccm_agg_mth
+    display_name: bi_ccm_agg_mth
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  1687354418000
+        field:  record_ts
+        type: MONTH
+        require_partition_filter: FALSE
+    roles: 
+      owner:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+
+  dim_cell_data_staging:
+    dataset: net_mobnet_rw
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/dim_cell_data_staging.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: net_mobnet_rw_dim_cell_data_staging
+    display_name: dim_cell_data_staging
+    deletion_protection: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  mobnet_system_properties:
+    dataset: mobnet_ops_ro
+    schema: ../dev/bigquery-schemas/net_mobnet_rw/mobnet_ops_ro.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: net_mobnet_rw_mobnet_ops_ro
+    display_name: mobnet_ops_ro
+    deletion_protection: false
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  network_dashboard_3month_data:
+    dataset: network_rw
+    schema: ../dev/bigquery-schemas/network_rw/network_dashboard_3month_data.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_network_rw_network_dashboard_3month_data
+    display_name: network_dashboard_3month_data
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  7776000000
+        field:  call_date
+        type: MONTH
+        require_partition_filter: true
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  network_users_category:
+    dataset: network_rw
+    schema: ../dev/bigquery-schemas/network_rw/network_users_category.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_network_rw_network_users_category
+    display_name: network_users_category
+    deletion_protection: false
+    time_partitioning:                     
+        expiration_ms:  7776000000
+        field:  date_mth
+        type: MONTH
+        require_partition_filter: true
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+  site_usage_level:
+    dataset: network_rw
+    schema: ../dev/bigquery-schemas/network_rw/site_usage_level.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_network_rw_site_usage_level
+    display_name: site_usage_level
+    deletion_protection: false
+    clustering:
+      - site_id
+    time_partitioning:                     
+        expiration_ms:  7776000000
+        field:  call_date
+        type: MONTH
+        require_partition_filter: true
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+  protocol_site_usage_level:
+    dataset: network_rw
+    schema: ../dev/bigquery-schemas/network_rw/protocol_site_usage_level.json
+    team: 3gss
+    costcentre: 3gss
+    cfu: technology
+    ccn_name: dev_network_rw_protocol_site_usage_level
+    display_name: protocol_site_usage_level
+    deletion_protection: false
+    clustering:
+      - site_id
+      - msisdn
+    time_partitioning:                     
+        expiration_ms:  7776000000
+        field:  date_of_call_month_date
+        type: MONTH
+        require_partition_filter: true
+    roles: 
+      owner:
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+      reader:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+      writer:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        
+views:
+  mth_recent_device_vw:
+    dataset: net_mobnet_rw
+    team: 3gss
+    costcentre: dig20965
+    cfu: technology
+    ccn_name: net_mobnet_rw_mth_recent_device_vw
+    deletion_protection: false
+    sql_filepath: ../dev/bigquery-schemas/net_mobnet_rw/mth_recent_device_vw.sql
+    roles: 
+      owner:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+
+  mth_best_device_vw:
+    dataset: net_mobnet_rw
+    team: 3gss
+    costcentre: dig20965
+    cfu: technology
+    ccn_name: net_mobnet_rw_mth_best_device_vw
+    deletion_protection: false
+    sql_filepath: ../dev/bigquery-schemas/net_mobnet_rw/mth_best_device_vw.sql
+    roles: 
+      owner:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+ 
+  usage_agg_vw:
+    dataset: net_mobnet_rw
+    team: 3gss
+    costcentre: dig20965
+    cfu: technology
+    ccn_name: net_mobnet_rw_usage_agg_vw
+    deletion_protection: false
+    sql_filepath: ../dev/bigquery-schemas/net_mobnet_rw/usage_agg_vw.sql
+    roles: 
+      owner:
+        - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+        - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+
+
+dataflow_sa_link: 
+  - serviceAccount:batch-job-dev-df-sa@bt-mob-nwk-3gss-r-dev-proc.iam.gserviceaccount.com
+composer_sa_link:
+  - serviceAccount:composer-dev-two-dev-sa@bt-dig-netcompose-cc-dev-ops.iam.gserviceaccount.com
+
+monitoring:
+  supply-chain-dev-resour:
+    proc_project_id: bt-tch-3g-sunset-dp-dev
+    ops_project_id: bt-tch-3g-sunset-dp-dev
+    ignore_linkage: true
+    notification_channels:
+      nashra_channel:
+        name: Nashra Sultana
+        description: Email Project team member
+        type: email
+        email: nashra.sultana@bt.com
+      leo_channel:
+        name: Leo Cohen
+        description: Email Project admin
+        type: email
+        email: leo.cohen@ee.co.uk
+      sathish_channel:
+        name: Sathish Kumar Singadi
+        description: Email Project team member
+        type: email
+        email: sathishkumar.singadi@bt.com
+      shephali_channel:
+        name: Shephali Sinha
+        description: Email Project team member
+        type: email
+        email: shephali.sinha@bt.com
+      elizabeth_channel:
+        name: Elizabeth Abraham
+        description: Email Project team member
+        type: email
+        email: elizabeth.abraham@bt.com
+      wayne_channel:
+        name: Wayne Smith
+        description: Email Project team member
+        type: email
+        email: wayne.5.smith@bt.com

@@ -1,0 +1,83 @@
+[
+    {
+      "name": "subscriber_num",
+      "type": "STRING"
+    },
+    {
+      "name": "price_plan",
+      "type": "STRING"
+    },
+    {
+      "name": "agg_mth",
+      "type": "STRING"
+    },
+    {
+      "name": "stack",
+      "type": "STRING"
+    },
+    {
+      "name": "current_brand",
+      "type": "STRING"
+    },
+    {
+      "name": "business_type",
+      "type": "STRING"
+    },
+    {
+        "name": "billing_base",
+        "type": "STRING"
+    },
+    {
+        "name": "arpu",
+        "type": "NUMERIC"
+    },
+    {
+        "name": "subscriber_status",
+        "type": "STRING"
+    },
+    {
+        "name": "active_30d_payg",
+        "type": "INT64"
+    },
+    {
+        "name": "active_90d_payg",
+        "type": "INT64"
+    },
+    {
+        "name": "ee_lifetime_id",
+        "type": "INT64"
+    },
+    {
+        "name": "account_num",
+        "type": "STRING"
+    },
+    {
+        "name": "sub_id",
+        "type": "STRING"
+    },
+    {
+        "name": "base_type",
+        "type": "STRING"
+    },
+    {
+        "name": "account_type",
+        "type": "STRING"
+    },
+    {
+        "name": "current_start_date",
+        "type": "DATE"
+    },
+    {
+        "name": "contract_start_date",
+        "type": "DATE"
+    },
+    {
+        "name": "contract_end_date",
+        "type": "DATE"
+    },
+    {
+        "name": "record_ts",
+        "type": "TIMESTAMP"
+    }
+]
+

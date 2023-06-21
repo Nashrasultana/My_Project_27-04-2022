@@ -1,0 +1,299 @@
+[
+    {
+      "name": "cell_data_id",
+      "type": "INTEGER"
+    },
+    {
+      "name": "effective_from_date_id",
+      "type": "INTEGER"
+    },
+    {
+      "name": "effective_to_date_id",
+      "type": "INTEGER"
+    },
+    {
+      "name": "ims_date",
+      "type": "INTEGER"
+    },
+    {
+      "name": "node_id",
+      "type": "INTEGER"
+    },
+    {
+      "name": "node_name",
+      "type": "STRING"
+    },
+    {
+      "name": "node_class",
+      "type": "STRING"
+    },
+    {
+      "name": "configuration_data_1",
+      "type": "INTEGER"
+    },
+    {
+      "name": "configuration_data_2",
+      "type": "INTEGER"
+    },
+    {
+      "name": "configuration_data_3",
+      "type": "INTEGER"
+    },
+    {
+      "name": "site_code",
+      "type": "STRING"
+    },
+    {
+      "name": "site_name",
+      "type": "STRING"
+    },
+    {
+      "name": "bst_status",
+      "type": "STRING"
+    },
+    {
+      "name": "engineering_name",
+      "type": "STRING"
+    },
+    {
+      "name": "region",
+      "type": "STRING"
+    },
+    {
+      "name": "parent_node",
+      "type": "STRING"
+    },
+    {
+      "name": "antenna_bearing",
+      "type": "NUMERIC"
+    },
+    {
+      "name": "cell_generation",
+      "type": "STRING"
+    },
+    {
+      "name": "site_address_line_1",
+      "type": "STRING"
+    },
+    {
+      "name": "site_address_line_2",
+      "type": "STRING"
+    },
+    {
+      "name": "site_address_line_3",
+      "type": "STRING"
+    },
+    {
+      "name": "site_address_line_4",
+      "type": "STRING"
+    },
+    {
+      "name": "county",
+      "type": "STRING"
+    },
+    {
+      "name": "site_number",
+      "type": "STRING"
+    },
+    {
+      "name": "site_area_description",
+      "type": "STRING"
+    },
+    {
+      "name": "acquisition_status",
+      "type": "STRING"
+    },
+    {
+      "name": "radius",
+      "type": "NUMERIC"
+    },
+    {
+      "name": "begin_angle",
+      "type": "NUMERIC"
+    },
+    {
+      "name": "end_angle",
+      "type": "NUMERIC"
+    },
+    {
+      "name": "cellsector_name",
+      "type": "STRING"
+    },
+    {
+      "name": "node_county",
+      "type": "STRING"
+    },
+    {
+      "name": "node_site_number",
+      "type": "STRING"
+    },
+    {
+      "name": "source",
+      "type": "STRING"
+    },
+    {
+      "name": "cell_id",
+      "type": "NUMERIC"
+    },
+    {
+      "name": "lac",
+      "type": "STRING"
+    },
+    {
+      "name": "site_id",
+      "type": "STRING"
+    },
+    {
+      "name": "max_cell_radius",
+      "type": "NUMERIC"
+    },
+    {
+      "name": "mnc",
+      "type": "STRING"
+    },
+    {
+      "name": "cell_status",
+      "type": "STRING"
+    },
+    {
+      "name": "latitude",
+      "type": "STRING"
+    },
+    {
+      "name": "longitude",
+      "type": "STRING"
+    },
+    {
+        "name": "northing",
+        "type": "STRING"
+    },
+    {
+        "name": "easting",
+        "type": "STRING"
+    },
+    {
+      "name": "antenna_type",
+      "type": "STRING"
+  },
+  {
+      "name": "post_code",
+      "type": "STRING"
+  },
+  {
+      "name": "mcc",
+      "type": "STRING"
+  },
+  {
+      "name": "loaded_dt",
+      "type": "INTEGER"
+  },
+  {
+      "name": "bsc",
+      "type": "STRING"
+  },
+  {
+      "name": "altitude",
+      "type": "STRING"
+  },
+  {
+    "name": "cell",
+    "type": "STRING"
+  },
+  {
+    "name": "accmin",
+    "type": "STRING"
+  },
+  {
+    "name": "antenna_gain",
+    "type": "STRING"
+  },
+  {
+    "name": "bcc",
+    "type": "STRING"
+  },
+  {
+    "name": "bcchno",
+    "type": "STRING"
+  },
+  {
+    "name": "bspwr",
+    "type": "STRING"
+  },
+  {
+    "name": "bspwrb",
+    "type": "STRING"
+  },
+  {
+    "name": "c_sys_type",
+    "type": "STRING"
+  },
+  {
+    "name": "cell_dir",
+    "type": "STRING"
+  },
+  {
+    "name": "cell_type",
+    "type": "STRING"
+  },
+  {
+    "name": "env_char",
+    "type": "STRING"
+  },
+  {
+    "name": "height",
+    "type": "STRING"
+  },
+  {
+    "name": "max_altitude",
+    "type": "STRING"
+  },
+  {
+    "name": "min_altitude",
+    "type": "STRING"
+  },
+  {
+    "name": "ncc",
+    "type": "STRING"
+  },
+  {
+    "name": "sector_angle",
+    "type": "STRING"
+  },
+  {
+    "name": "talim",
+    "type": "STRING"
+  },
+  {
+    "name": "antenna_tilt",
+    "type": "STRING"
+  },
+  {
+    "name": "override_ta",
+    "type": "STRING"
+  },
+  {
+    "name": "node_status",
+    "type": "STRING"
+  },
+  {
+    "name": "enodebid",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "global_cell_id",
+    "type": "STRING"
+  },
+  {
+    "name": "technology",
+    "type": "STRING"
+  },
+  {
+    "name": "process_run_sequence",
+    "type": "INTEGER"
+  },  
+  {
+    "name": "sourced_from",
+    "type": "STRING"
+  }  
+]
+

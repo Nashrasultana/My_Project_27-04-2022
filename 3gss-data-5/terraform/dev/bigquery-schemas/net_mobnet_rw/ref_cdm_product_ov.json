@@ -1,0 +1,52 @@
+[
+    {
+      "name": "curr_product_code",
+      "type": "STRING"
+    },
+    {
+      "name": "start_date",
+      "type": "DATE"
+    },
+    {
+      "name": "end_date",
+      "type": "DATE"
+    },
+    {
+      "name": "mobile_data_speed",
+      "type": "STRING"
+    },    
+    {
+        "name": "product_group",
+        "type": "STRING"
+    },
+    {
+        "name": "product_name",
+        "type": "STRING"
+    },
+    {
+        "name": "mobile_data_allowance",
+        "type": "NUMERIC"
+    },    
+    {
+        "name": "product_type",
+        "type": "STRING"
+    },
+    {
+        "name": "source_system",
+        "type": "STRING"
+    },
+    {
+        "name": "product_line",
+        "type": "STRING"
+    },
+    {
+        "name": "mobile_service_type",
+        "type": "STRING"
+    },
+    {
+        "name": "record_ts",
+        "type": "TIMESTAMP"
+    }
+]
+
+

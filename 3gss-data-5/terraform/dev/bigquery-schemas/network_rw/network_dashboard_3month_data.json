@@ -1,0 +1,103 @@
+[
+    {
+        "name": "call_date",
+        "type": "DATE"
+    },
+    {
+        "name": "date_of_call",
+        "type": "INTEGER"
+    },
+    {
+        "name": "msisdn",
+        "type": "STRING"
+    },
+    {
+        "name": "exbr_account_num",
+        "type": "INTEGER"
+    },    
+    {
+        "name": "imei",
+        "type": "STRING"
+    },
+    {
+        "name": "imsi",
+        "type": "STRING"
+    },
+    {
+        "name": "first_cell_data_id",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_duration_secs",
+        "type": "INTEGER"
+    },    
+    {
+        "name": "home_data_in_volume_kb",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_duration_secs",
+        "type": "INTEGER"
+    },   
+    {
+        "name": "work_data_in_volume_kb",
+        "type": "INTEGER"
+    },        
+    {
+        "name": "home_data_out_volume_kb",
+        "type": "INTEGER"
+    },     
+    {
+        "name": "work_data_out_volume_kb",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_data_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_data_duration_secs",
+        "type": "INTEGER"
+    }
+]
+

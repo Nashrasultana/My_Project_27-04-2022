@@ -1,0 +1,56 @@
+variables:
+  DEV_PLAN: ${CI_COMMIT_REF_SLUG}-dev
+  DEV_PROJECT_ID: bt-tch-3g-sunset-dp-dev
+  DEV_BUCKET: bt-tch-3g-sunset-dp-dev-tfstate
+  DEV_BUCKET_PREFIX: dp-dev-state
+  DEV_DEPLOY_KEY: dev_deploy_key.json
+
+.only-dev:
+  except:
+    - master
+    - main
+
+dev-plan:
+  stage: plan
+  extends: 
+    - .only-dev
+  script:
+    - cd terraform/infra
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_PROC_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - gcloud auth activate-service-account --key-file $DEV_DEPLOY_KEY
+    - export GOOGLE_APPLICATION_CREDENTIALS=$DEV_DEPLOY_KEY
+    - terraform init -reconfigure -backend-config="prefix=$DEV_BUCKET_PREFIX" -backend-config="bucket=$DEV_BUCKET"
+    - terraform plan -var-file=../dev/variables.tfvars -out=$DEV_PLAN.tfplan
+    - terraform show -no-color $DEV_PLAN.tfplan > $DEV_PLAN.txt
+    - terraform show -json -no-color $DEV_PLAN.tfplan > $DEV_PLAN.json
+    - cat $DEV_PLAN.json | convert_report > $DEV_PLAN.gitlab.json
+  artifacts:
+    expire_in: 1 hour
+    when: on_success
+    paths:
+      - terraform/infra/$DEV_PLAN.tfplan
+      - terraform/infra/$DEV_PLAN.txt
+      - terraform/infra/$DEV_PLAN.json
+    reports:
+      terraform:
+        - terraform/infra/$DEV_PLAN.gitlab.json
+
+dev-apply:
+  stage: apply
+  script:
+    - cd terraform/infra
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_PROC_KEY} > $DEV_DEPLOY_KEY
+    - echo ${DEV_SA_DATA_KEY} > $DEV_DEPLOY_KEY
+    - gcloud auth activate-service-account --key-file $DEV_DEPLOY_KEY
+    - export GOOGLE_APPLICATION_CREDENTIALS=$DEV_DEPLOY_KEY
+    - terraform init -backend-config="prefix=$DEV_BUCKET_PREFIX" -backend-config="bucket=$DEV_BUCKET"
+    - terraform apply -auto-approve -input=false $DEV_PLAN.tfplan
+  only:
+    refs:
+      - dev
+  when: manual
+  dependencies:
+    - dev-plan

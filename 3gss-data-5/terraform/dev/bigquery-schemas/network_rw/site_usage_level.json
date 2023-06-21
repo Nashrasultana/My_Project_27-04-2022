@@ -1,0 +1,471 @@
+[
+    {
+      "name": "date_of_call",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "call_date",
+      "mode": "",
+      "type": "DATE",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "msisdn",
+      "mode": "",
+      "type": "STRING",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "imei",
+      "mode": "",
+      "type": "STRING",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "imsi",
+      "mode": "",
+      "type": "STRING",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "exbr_account_num",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "site_id",
+      "mode": "",
+      "type": "STRING",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_CALLS_2G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_CALLS_3G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_CALLS_4G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_CALLS_WIFI",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_CALLS_OTHER",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_CALLS_2G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_CALLS_3G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_CALLS_4G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_CALLS_WIFI",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_CALLS_OTHER",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_CALLS_2G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_CALLS_3G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_CALLS_4G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_CALLS_WIFI",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_CALLS_OTHER",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_MINS_2G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_MINS_3G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_MINS_4G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_MINS_WIFI",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_MINS_OTHER",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_MINS_2G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_MINS_3G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_MINS_4G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_MINS_WIFI",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_MINS_OTHER",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_MINS_2G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_MINS_3G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_MINS_4G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_MINS_WIFI",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_MINS_OTHER",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_SMS_2G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_SMS_3G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_SMS_4G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_SMS_WIFI",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MT_SMS_OTHER",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_SMS_2G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_SMS_3G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_SMS_4G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_SMS_WIFI",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "MO_SMS_OTHER",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_SMS_2G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_SMS_3G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_SMS_4G",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_SMS_WIFI",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_SMS_OTHER",
+      "mode": "",
+      "type": "INTEGER",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "UL_MB_2G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "UL_MB_3G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "UL_MB_4G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "UL_MB_5G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "UL_MB_OTHER",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "DL_MB_2G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "DL_MB_3G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "DL_MB_4G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "DL_MB_5G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "DL_MB_OTHER",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_DATA_MB_2G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_DATA_MB_3G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_DATA_MB_4G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_DATA_MB_5G",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    },
+    {
+      "name": "TOTAL_DATA_MB_OTHER",
+      "mode": "",
+      "type": "FLOAT",
+      "description": null,
+      "fields": []
+    }
+  ]

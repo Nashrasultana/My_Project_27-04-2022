@@ -1,0 +1,243 @@
+[
+    {
+        "name": "month_id",
+        "type": "INTEGER"
+    },
+    {
+        "name": "msisdn",
+        "type": "STRING"
+    },
+    {
+        "name": "exbr_account_num",
+        "type": "INTEGER"
+    },
+    {
+        "name": "css_account_id",
+        "type": "INTEGER"
+    },
+    {
+        "name": "jt_customer_id",
+        "type": "INTEGER"
+    },
+    {
+        "name": "subscription_sk",
+        "type": "INTEGER"
+    },    
+    {
+        "name": "imei",
+        "type": "STRING"
+    },
+    {
+        "name": "imsi",
+        "type": "STRING"
+    },
+    {
+        "name": "first_cell_data_id",
+        "type": "INTEGER"
+    },
+    {
+        "name": "last_cell_data_id",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_data_cdr_count",
+        "type": "INTEGER"
+    },    
+    {
+        "name": "home_data_in_volume_kb",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_sms_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_data_cdr_count",
+        "type": "INTEGER"
+    },    
+    {
+        "name": "work_data_in_volume_kb",
+        "type": "INTEGER"
+    },
+    {
+        "name": "cnt_of_distinct_bnumber",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_data_session_count",
+        "type": "INTEGER"
+    },        
+    {
+        "name": "home_data_out_volume_kb",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_data_session_count",
+        "type": "INTEGER"
+    },       
+    {
+        "name": "work_data_out_volume_kb",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_ce_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_ce_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_ce_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_ce_dropcalls_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_abnormal_session_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_abnormal_session_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_data_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_data_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "mo_handoff_cell_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "mt_handoff_cell_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "mo_handoff_technology_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "mt_handoff_technology_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "mo_handoff_mnc_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "mt_handoff_mnc_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_csd_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_csd_duration_secs",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_dropcalls_ran_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mt_dropcalls_core_count",
+        "type": "INTEGER"
+    },
+    {        
+	    "name": "work_mt_dropcalls_ran_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mt_dropcalls_core_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_dropcalls_ran_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "home_mo_dropcalls_core_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_dropcalls_ran_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "work_mo_dropcalls_core_count",
+        "type": "INTEGER"
+    },
+    {
+        "name": "process_run_sequence",
+        "type": "INTEGER"
+    }
+]
+

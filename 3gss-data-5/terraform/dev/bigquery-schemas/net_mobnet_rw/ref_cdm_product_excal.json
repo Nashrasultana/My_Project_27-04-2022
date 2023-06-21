@@ -1,0 +1,62 @@
+[
+    {
+      "name": "product_code",
+      "type": "STRING"
+    },
+    {
+      "name": "effective_date",
+      "type": "DATETIME"
+    },
+    {
+      "name": "expiration_date",
+      "type": "DATETIME"
+    },
+    {
+      "name": "protocol",
+      "type": "STRING"
+    },
+    {
+      "name": "product_rollup",
+      "type": "STRING"
+    },
+    {
+      "name": "base_type",
+      "type": "STRING"
+    },
+    {
+        "name": "product_group",
+        "type": "STRING"
+    },
+    {
+        "name": "product_description",
+        "type": "STRING"
+    },
+    {
+        "name": "total_allowance_data",
+        "type": "NUMERIC"
+    },
+    {
+        "name": "family_type",
+        "type": "STRING"
+    },
+    {
+        "name": "base_type_level1",
+        "type": "STRING"
+    },
+    {
+        "name": "product_type",
+        "type": "STRING"
+    },
+    {
+        "name": "stack",
+        "type": "STRING"
+    },
+    {
+        "name": "brand",
+        "type": "STRING"
+    },
+    {
+        "name": "record_ts",
+        "type": "TIMESTAMP"
+    }
+]
